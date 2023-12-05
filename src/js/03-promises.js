@@ -26,21 +26,15 @@ function handleSubmit(event) {
   }
 }
 
-
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
     setTimeout(() => {
       if (shouldResolve) {
-        // Fulfill
-        resolve(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        resolve({ position, delay });
       } else {
-        reject(`❌ Rejected promise ${position} in ${delay}ms`);
-        // Reject
+        reject({ position, delay });
       }
     }, delay);
   });
 }
-
-
-
